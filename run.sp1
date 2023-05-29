@@ -1,0 +1,20 @@
+param (
+    [Parameter(Mandatory = $true)]
+    [ValidateScript({ Test-Path $_ -PathType Container })]
+    [string]$sourceDocumentsFolder,
+
+    [Parameter(Mandatory = $true)]
+    [ValidateScript({ Test-Path $_ -PathType Container })]
+    [string]$modelFolder
+)
+
+# Check if the model file exists in the model folder
+$modelFile = Join-Path -Path $modelFolder -ChildPath "ggml-gpt4all-j-v1.3-groovy.bin"
+if (-not (Test-Path -Path $modelFile -PathType Leaf)) {
+    Write-Host "Model file not found in the model folder. Downloading..."
+    # Download the model file using Invoke-WebRequest
+    Invoke-WebRequest -Uri "https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin" -OutFile $modelFile
+}
+
+# Run the Docker container interactively with the mounted source documents and model folders
+docker run -it -v "${sourceDocumentsFolder}:/app/source_documents" -v "${modelFolder}:/app/models" my-private-gpt /bin/bash -c "python3 ingest.py && python3 privateGPT.py"
