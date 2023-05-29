@@ -1,5 +1,9 @@
 #!/bin/bash
 
+realpath() {
+    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
+
 # Check if the source documents folder argument is provided
 if [ $# -lt 2 ]; then
     echo "ERROR: Please provide the path to the folder containing the source documents and the model folder."
@@ -20,4 +24,4 @@ if [ ! -f "$model_file" ]; then
 fi
 
 # Run the Docker container interactively with the mounted source documents and model folders
-docker run -it -v "$source_documents_folder:/app/source_documents" -v "$model_folder:/app/models" my-private-gpt2 /bin/bash -c "python3 ingest.py && python3 privateGPT.py"
+docker run -it -v "$source_documents_folder:/app/source_documents" -v "$model_folder:/app/models" bobpuley/simple-privategpt-docker:1.0.0 /bin/bash -c "python3 ingest.py && python3 privateGPT.py"
