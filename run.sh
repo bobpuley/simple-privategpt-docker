@@ -22,5 +22,5 @@ if [ ! -f "$model_file" ]; then
 fi
 
 # Run the Docker container interactively with the mounted source documents and model folders
-docker run -it -v "$source_documents_folder:/app/source_documents" -v "$model_folder:/app/models" bobpuley/simple-privategpt-docker:1.0.0 /bin/bash
+docker run -it -v "$source_documents_folder:/app/source_documents" -v "$model_folder:/app/models" bobpuley/simple-privategpt-docker:1.0.0 /bin/bash -c "python3 ingest.py && python3 privateGPT.py"
 
