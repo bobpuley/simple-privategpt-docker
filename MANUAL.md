@@ -42,7 +42,7 @@ Please adjust the paths and commands according to your specific setup and requir
 Running the Docker Container with rundocker.sh
 ----------------------------------------------
 
-The `rundocker.sh` script provides a convenient way to run the Docker container for the privateGPT application. It requires the path to the folder containing the source documents and the model folder as mandatory parameters.
+The `run.sh` script provides a convenient way to run the Docker container for the privateGPT application. It requires the path to the folder containing the source documents and the model folder as mandatory parameters.
 
 ### Prerequisites
 
@@ -50,21 +50,21 @@ Make sure you have Docker installed on your system before using the `rundocker.s
 
 ### Usage
 
-To run the Docker container using the `rundocker.sh` script, follow these steps:
+To run the Docker container using the `run.sh` script, follow these steps:
 
-1.  Save the `rundocker.sh` script to a desired location.
+1.  Save the `run.sh` script to a desired location.
 
-2.  Open a terminal and navigate to the directory where the `rundocker.sh` script is located.
+2.  Open a terminal and navigate to the directory where the `run.sh` script is located.
 
 3.  Make the script executable by running the following command:
 
 
-    `chmod +x rundocker.sh`
+    `chmod +x run.sh`
 
 4.  Run the script with the path to the folder containing the source documents and the model folder as parameters. For example:
 
 
-    `./rundocker.sh /path/to/source_documents /path/to/model_folder`
+    `./run.sh /path/to/source_documents /path/to/model_folder`
 
     Replace `/path/to/source_documents` with the absolute path to the folder containing the source documents, and `/path/to/model_folder` with the absolute path to the folder where you have or want to store the GPT4 model file.
 
@@ -80,4 +80,4 @@ To run the Docker container using the `rundocker.sh` script, follow these steps:
 
 Please adjust the paths and commands according to your specific setup and requirements.
 
-Remember to have the Docker container built using the provided Dockerfile and the privateGPT repository cloned and set up properly before running the `rundocker.sh` script.
+Remember to have the Docker container built using the provided Dockerfile and the privateGPT repository cloned and set up properly before running the `run.sh` script.
