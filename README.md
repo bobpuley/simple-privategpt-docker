@@ -1,7 +1,7 @@
 Docker Image for privateGPT
 ===========================
 
-This Docker image provides an environment to run the privateGPT application, which is a chatbot powered by GPT-3 for answering questions.
+This Docker image provides an environment to run the privateGPT application, which is a chatbot powered by GPT4 for answering questions.
 
 Features
 --------
@@ -21,15 +21,15 @@ To use this Docker image, follow the steps below:
 
 Pull the latest version of the Docker image from DockerHub by running the following command:
 
-`docker pull <image_name>:<tag>`
+`docker pull simple-privategpt-docker:<tag>`
 
-Replace `<image_name>` with the name of the Docker image and `<tag>` with the desired tag.
+Replace `<tag>` with the desired tag.
 
 ### Run the Docker Container
 
 To run the Docker container, execute the following command:
 
-`docker run -it -v /path/to/source_documents:/app/source_documents -v /path/to/model_folder:/app/models <image_name>:<tag>`
+`docker run -it -v /path/to/source_documents:/app/source_documents -v /path/to/model_folder:/app/models simple-privategpt-docker:<tag>`
 
 Replace `/path/to/source_documents` with the absolute path to the folder containing the source documents and `/path/to/model_folder` with the absolute path to the folder where the GPT4 model file is located. `<image_name>` and `<tag>` should match the name and tag of the Docker image you pulled.
 
@@ -46,21 +46,21 @@ The Docker image supports customization through environment variables. The follo
 
 To customize these environment variables, pass them as options to the `docker run` command. For example:
 
-`docker run -it -e MODEL_TYPE=GPT4All -e PERSIST_DIRECTORY=db -e MODEL_PATH=models/ggml-gpt4all-j-v1.3-groovy.bin <image_name>:<tag>`
+`docker run -it -e MODEL_TYPE=GPT4All -e PERSIST_DIRECTORY=db -e MODEL_PATH=models/ggml-gpt4all-j-v1.3-groovy.bin simple-privategpt-docker:<tag>`
 
 ### Volume Mounting
 
 The Docker container supports volume mounting for source documents and model files. Mount the source documents folder and the model folder to the appropriate locations inside the container using the `-v` option. For example:
 
-`docker run -it -v /path/to/source_documents:/app/source_documents -v /path/to/model_folder:/app/models <image_name>:<tag>`
+`docker run -it -v /path/to/source_documents:/app/source_documents -v /path/to/model_folder:/app/models simple-privategpt-docker:<tag>`
 
 ### Example Usage
 
 Here's an example of how to run the Docker container with volume mounting and customized environment variables:
 
-`docker run -it -v /path/to/source_documents:/app/source_documents -v /path/to/model_folder:/app/models -e MODEL_TYPE=GPT4All -e PERSIST_DIRECTORY=db <image_name>:<tag>`
+`docker run -it -v /path/to/source_documents:/app/source_documents -v /path/to/model_folder:/app/models -e MODEL_TYPE=GPT4All -e PERSIST_DIRECTORY=db simple-privategpt-docker:<tag>`
 
-More informations [here](MANUAL.md)
+More informations [here](https://github.com/bobpuley/simple-privategpt-docker/blob/main/MANUAL.md)
 
 ### Interactive Mode
 
@@ -75,7 +75,7 @@ Repository and Source Code
 
 The Dockerfile and source code for this Docker image can be found in the GitHub repository:
 
-[Link to GitHub Repository](https://github.com/your/repo)
+[Link to GitHub Repository](https://hub.docker.com/r/bobpuley/simple-privategpt-docker)
 
 Issues and Contributions
 ------------------------
@@ -90,4 +90,4 @@ This Docker image and its associated source code are licensed under the [MIT Lic
 About the Author
 ----------------
 
-This Docker image is maintained by [Your Name].
+This Docker image is maintained by [bobpuley].
